@@ -8,7 +8,7 @@ The package consists of the following Python modules:
 * Rotamer
 """
 __version__ = "0.0.6"
-from .HyresBuilder import *
+from .Rebuilder import *
 from .Rotamer import *
 from .base import *
 
