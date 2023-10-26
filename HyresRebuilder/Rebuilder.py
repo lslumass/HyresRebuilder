@@ -40,7 +40,7 @@ def rebuild(inp, out):
  
             if res_name not in ['GLY', 'PRO', 'ALA']:
                 refs = hyres.select_atoms("resid "+str(res.resid)+" and name CA CB CC CD CE CF")
-                opt_side_chain(name, refs, mobile)
+                opt_side_chain(res_name, refs, mobile)
         
             if res_name != 'PRO':
                 hyres_H = hyres.select_atoms("resid "+str(res.resid)+" and name H")
