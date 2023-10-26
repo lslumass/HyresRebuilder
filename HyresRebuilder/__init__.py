@@ -12,4 +12,3 @@ from .Rebuilder import *
 from .Rotamer import *
 from .base import *
 
-print('Hyres_rebuilder, version: 0.1.0')
