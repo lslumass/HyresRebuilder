@@ -7,7 +7,7 @@ The package consists of the following Python modules:
 * HyresRebuilder
 * Rotamer
 """
-__version__ = "0.1.0"
+__version__ = "0.0.1"
 from .HyresBuilder import *
 from .Rotamer import *
 
