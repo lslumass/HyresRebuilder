@@ -1,0 +1,2 @@
+MDAnalysis==2.4.3
+numpy==1.24.4
