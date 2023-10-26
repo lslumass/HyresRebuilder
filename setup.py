@@ -35,8 +35,9 @@ setup(
     download_url="https://github.com/wayuer19/HyresRebuilder/releases",
     platforms="Tested on Ubuntu 22.04",
     packages=["HyresRebuilder"],
+    package_dir={'HyresRebuilder':'HyresRebuilder'},
     package_data={
-        "HyresRebuilder.map":["*.pdb"],
+        "HyresRebuilder":["map/*.pdb"]
     },
     install_requires=INSTALL_REQUIRES,
     extras_require={"test": TEST_REQUIRES + INSTALL_REQUIRES,},
