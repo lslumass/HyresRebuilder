@@ -48,4 +48,9 @@ setup(
         "Topic :: Scientific/Engineering :: Chemistry",
         "Intended Audience :: Science/Research",
     ],
+    entry_options={
+        'console_scripts': [
+            'hyresrebuilder = HyresRebuilder:Rebuilder',
+        ]
+    }
 )
