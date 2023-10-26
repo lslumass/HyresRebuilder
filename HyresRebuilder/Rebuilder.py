@@ -13,18 +13,14 @@ from MDAnalysis.topology.guessers import guess_types
 from .Rotamer import opt_side_chain
 
 
-parser = argparse.ArgumentParser(
-  prog='HyresRebuilder',
-  description='Rebuild atomistic model from HyRes model.'
-)
-inp = parser.add_argument('input')
-out = parser.add_argument('output')
-
-def rebuild(inp, out):
+def rebuild():
     parser = argparse.ArgumentParser(
       prog='HyresRebuilder',
       description='Rebuild atomistic model from HyRes model.'
     )
+    inp = parser.add_argument('input')
+    out = parser.add_argument('output')
+
     hyres = mda.Universe(inp)
     guessed_eles = guess_types(hyres.atoms.names)
     hyres.add_TopologyAttr('elements', guessed_eles)
