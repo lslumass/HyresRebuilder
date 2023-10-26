@@ -11,10 +11,8 @@ from MDAnalysis.topology.guessers import guess_types
 from .Rotamer import opt_side_chain
 
 
-print('Hyres_rebuilder, version: 0.1.0')
-drt = '/home/lsl/Desktop/scripts/hyres_backmapping/map/'
-
 def rebuild(inp, out):
+    drt = './map/'
     hyres = mda.Universe(inp)
     guessed_eles = guess_types(hyres.atoms.names)
     hyres.add_TopologyAttr('elements', guessed_eles)
@@ -22,8 +20,13 @@ def rebuild(inp, out):
     with mda.Writer(out, multiframe=False, reindex=False) as f:
         idx = 1
         for res in hyres.residues:
-            name = res.resname
-            mobile = mda.Universe(drt+name+'_ideal.pdb')
+            res_name = res.resname
+            if res_name in ['ARG','HIS','LYS','ASP','GLU','SER','THR','ASN','GLN','CYS','GLY','PRO','ALA','VAL','ILE','LEU','MET','PHE','TYR','TRP']:
+                mobile = mda.Universe(drt+name+'_ideal.pdb')
+            else:
+                print('Error: Unkown resname '+resname)
+                exit()
+                
             segid = hyres.select_atoms("resid "+str(res.resid)).segids[0]
             chainID = hyres.select_atoms("resid "+str(res.resid)).chainIDs[0]
             for atom in mobile.atoms:
@@ -34,11 +37,11 @@ def rebuild(inp, out):
             #align.alignto(mobile.select_atoms("name N CA C O CB"), hyres.select_atoms("resid "+str(res.resid)+" and name N CA C O"), select='name N CA C O', match_atoms=False)
             align.alignto(mobile, hyres.select_atoms("resid "+str(res.resid)), select='name N CA C O', match_atoms=False)
  
-            if name not in ['GLY', 'PRO', 'ALA']:
+            if res_name not in ['GLY', 'PRO', 'ALA']:
                 refs = hyres.select_atoms("resid "+str(res.resid)+" and name CA CB CC CD CE CF")
                 opt_side_chain(name, refs, mobile)
         
-            if name != 'PRO':
+            if res_name != 'PRO':
                 hyres_H = hyres.select_atoms("resid "+str(res.resid)+" and name H")
                 for atom in hyres_H.atoms:
                     atom.id = idx
