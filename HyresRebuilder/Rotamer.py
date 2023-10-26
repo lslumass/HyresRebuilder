@@ -3,7 +3,6 @@ Rotamer is for regulating the side chain conformation to match the position of H
 the function of "rotate_about_axis" is modified based on the same function in the package of Biotite
 https://github.com/biotite-dev/biotite
 """
-
 import numpy as np
 import math
 
