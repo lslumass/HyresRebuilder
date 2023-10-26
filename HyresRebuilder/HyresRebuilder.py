@@ -11,7 +11,7 @@ from MDAnalysis.topology.guessers import guess_types
 from .Rotamer import opt_side_chain
 
 
-print('Hyres_Rebuilder, version: 0.1.0')
+print('Hyres_rebuilder, version: 0.1.0')
 
 inp = sys.argv[1]
 out = sys.argv[2]
@@ -52,4 +52,6 @@ with mda.Writer(out, multiframe=False, reindex=False) as f:
             atom.id = idx
             idx += 1
         #f.write(hyres_sel)
+        f.write(mobile_sel)
+
         f.write(mobile_sel)
