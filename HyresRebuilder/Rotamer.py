@@ -1,5 +1,7 @@
 """
-Rotamer is for regulating the side chain conformation to match the position of HyRes side chains by tuning each of angle
+Rotamer is for regulating the side chain conformation to match the position of HyRes side chains by tuning each angle
+the function of "rotate_about_axis" is modified based on the same function in the package of Biotite
+https://github.com/biotite-dev/biotite
 """
 
 import numpy as np
