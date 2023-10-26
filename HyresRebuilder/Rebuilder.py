@@ -33,7 +33,8 @@ def rebuild():
         for res in hyres.residues:
             res_name = res.resname
             if res_name in ['ARG','HIS','LYS','ASP','GLU','SER','THR','ASN','GLN','CYS','GLY','PRO','ALA','VAL','ILE','LEU','MET','PHE','TYR','TRP']:
-                pdb = Path(__file__).parent / "../map/"+res_name+"_ideal.pdb"
+                filename = "../map/"+res_name+"_ideal.pdb"
+                pdb = Path(__file__).parent / filename
                 mobile = mda.Universe(pdb)
             else:
                 print('Error: Unkown resname '+res_name)
