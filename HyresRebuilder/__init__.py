@@ -10,3 +10,5 @@ The package consists of the following Python modules:
 __version__ = "1.2.7"
 from .HyresBuilder import *
 from .Rotamer import *
+
+print('Hyres_rebuilder, version: 0.1.0')
