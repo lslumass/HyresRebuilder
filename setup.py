@@ -53,4 +53,7 @@ setup(
             'hyresrebuilder = HyresRebuilder.Rebuilder:rebuild',
         ]
     }
+    package_data={
+        'HyresRebuilder': ['HyresRebuilder/map/*'],
+    }
 )
