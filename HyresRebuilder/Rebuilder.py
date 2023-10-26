@@ -25,7 +25,7 @@ def rebuild(inp, out):
                 pdb = Path(__file__).parent / "../map/"+res_name+"_ideal.pdb"
                 mobile = mda.Universe(pdb)
             else:
-                print('Error: Unkown resname '+resname)
+                print('Error: Unkown resname '+res_name)
                 exit()
                 
             segid = hyres.select_atoms("resid "+str(res.resid)).segids[0]
