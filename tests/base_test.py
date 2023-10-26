@@ -1,4 +1,4 @@
-from .HyresRebuilder import base
+from HyresRebuilder import base
 
 
 def test_base():
