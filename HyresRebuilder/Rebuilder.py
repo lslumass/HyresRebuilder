@@ -4,6 +4,7 @@ Athour: Shanlong Li
 """
 
 import sys
+import argparse
 import numpy as np
 from pathlib import Path
 import MDAnalysis as mda
@@ -11,6 +12,13 @@ from MDAnalysis.analysis import align
 from MDAnalysis.topology.guessers import guess_types
 from .Rotamer import opt_side_chain
 
+
+parser = argparse.ArgumentParser(
+  prog='HyresRebuilder',
+  description='Rebuild atomistic model from HyRes model.'
+)
+inp = parser.add_argument('input')
+out = parser.add_argument('output')
 
 def rebuild(inp, out):
     hyres = mda.Universe(inp)
