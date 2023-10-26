@@ -18,8 +18,11 @@ def rebuild():
       prog='HyresRebuilder',
       description='Rebuild atomistic model from HyRes model.'
     )
-    inp = parser.add_argument('input')
-    out = parser.add_argument('output')
+    parser.add_argument('input')
+    parser.add_argument('output')
+    arges = parser.parse_args()
+    inp = arges.input
+    out = arges.output
 
     hyres = mda.Universe(inp)
     guessed_eles = guess_types(hyres.atoms.names)
