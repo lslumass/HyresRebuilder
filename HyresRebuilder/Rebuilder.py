@@ -48,7 +48,7 @@ def rebuild():
                 atom.chainID = chainID
  
             #align.alignto(mobile.select_atoms("name N CA C O CB"), hyres.select_atoms("resid "+str(res.resid)+" and name N CA C O"), select='name N CA C O', match_atoms=False)
-            align.alignto(mobile, hyres.select_atoms("resid "+str(res.resid)), select='name N CA C O', match_atoms=False)
+            align.alignto(mobile, hyres.select_atoms("resid "+str(res.resid)), select='name N CA C', match_atoms=False)
  
             if res_name not in ['GLY', 'PRO', 'ALA']:
                 refs = hyres.select_atoms("resid "+str(res.resid)+" and name CA CB CC CD CE CF")
@@ -61,9 +61,16 @@ def rebuild():
                     idx += 1
                 f.write(hyres_H)
  
-            mobile_sel = mobile.select_atoms("all")
+            mobile_sel = mobile.select_atoms("not name O")
             for atom in mobile_sel.atoms:
                 atom.id = idx
                 idx += 1
             #f.write(hyres_sel)
             f.write(mobile_sel)
+
+            hyres_O = hyres.select_atoms("resid "+str(res.resid)+" and name O")
+            for atom in hyres_O.atoms:
+                atom.id = idx
+                idx += 1
+            f.write(hyres_O)
+ 
