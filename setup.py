@@ -50,7 +50,7 @@ setup(
     ],
     entry_options={
         'console_scripts': [
-            'hyresrebuilder = HyresRebuilder:Rebuilder',
+            'hyresrebuilder = HyresRebuilder:rebuild',
         ]
     }
 )
