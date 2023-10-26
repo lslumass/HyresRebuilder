@@ -21,6 +21,10 @@ inp = parser.add_argument('input')
 out = parser.add_argument('output')
 
 def rebuild(inp, out):
+    parser = argparse.ArgumentParser(
+      prog='HyresRebuilder',
+      description='Rebuild atomistic model from HyRes model.'
+    )
     hyres = mda.Universe(inp)
     guessed_eles = guess_types(hyres.atoms.names)
     hyres.add_TopologyAttr('elements', guessed_eles)
