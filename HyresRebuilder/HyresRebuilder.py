@@ -5,6 +5,7 @@ Athour: Shanlong Li
 
 import sys
 import numpy as np
+from pathlib import Path
 import MDAnalysis as mda
 from MDAnalysis.analysis import align
 from MDAnalysis.topology.guessers import guess_types
@@ -12,7 +13,6 @@ from .Rotamer import opt_side_chain
 
 
 def rebuild(inp, out):
-    drt = './map/'
     hyres = mda.Universe(inp)
     guessed_eles = guess_types(hyres.atoms.names)
     hyres.add_TopologyAttr('elements', guessed_eles)
@@ -22,7 +22,8 @@ def rebuild(inp, out):
         for res in hyres.residues:
             res_name = res.resname
             if res_name in ['ARG','HIS','LYS','ASP','GLU','SER','THR','ASN','GLN','CYS','GLY','PRO','ALA','VAL','ILE','LEU','MET','PHE','TYR','TRP']:
-                mobile = mda.Universe(drt+name+'_ideal.pdb')
+                pdb = Path(__file__).parent / "../map/"+res_name+"_ideal.pdb"
+                mobile = mda.Universe(pdb)
             else:
                 print('Error: Unkown resname '+resname)
                 exit()
