@@ -55,6 +55,7 @@ setup(
     entry_options={
         'console_scripts': [
             'hyresrebuilder = HyresRebuilder.Rebuilder:rebuild',
+            'RNArebuilder = HyresRebuilder.RNA_Rebuilder:RNArebuild',
         ]
     }
 )
