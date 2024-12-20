@@ -28,7 +28,7 @@ setup(
     version=__version__,
     author="Shanlong Li",
     author_email="shanlongli@umass.edu",
-    description="Rebuild atomistic model from HyRes model.",
+    description="Rebuild atomistic model from HyRes & iConRNA model.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/wayuer19/HyresRebuilder",
@@ -52,7 +52,7 @@ setup(
         "Topic :: Scientific/Engineering :: Chemistry",
         "Intended Audience :: Science/Research",
     ],
-    entry_options={
+    entry_points={
         'console_scripts': [
             'RNArebuilder = HyresRebuilder.RNA_Rebuilder:RNArebuild',
             'hyresrebuilder = HyresRebuilder.Rebuilder:rebuild',
